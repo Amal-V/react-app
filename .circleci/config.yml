@@ -11,7 +11,7 @@ jobs:
       - save_cache:
            key: build-{{ .Environment.CIRCLE_SHA1 }}
            paths:
-             - ./ecs-infra
+             - ./build
  deployment:
    machine: true
    steps:
