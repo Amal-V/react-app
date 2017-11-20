@@ -4,6 +4,7 @@ jobs:
     docker:
       - image: node:boron
     steps:
+      - checkout
       -  run: |
            npm install
            npm run build
