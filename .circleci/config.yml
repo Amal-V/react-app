@@ -19,7 +19,7 @@ jobs:
    steps:
      - restore_cache:
          key: build-{{ .Environment.CIRCLE_SHA1 }}
-     - run aws s3 sync ./build s3://"${STATIC_BUCKET}"/
+     - run: aws s3 sync ./build s3://"${STATIC_BUCKET}"/
             
 workflows:
   version: 2
