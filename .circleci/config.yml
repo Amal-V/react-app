@@ -8,6 +8,8 @@ jobs:
       -  run: |
            npm install
            npm run build
+           la -la
+           pwd
       - save_cache:
            key: build-{{ .Environment.CIRCLE_SHA1 }}
            paths:
