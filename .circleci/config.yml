@@ -8,18 +8,17 @@ jobs:
       -  run: |
            npm install
            npm run build
-           ls -la
-           pwd
+           cp -vr build /tmp/
       - save_cache:
            key: build-{{ .Environment.CIRCLE_SHA1 }}
            paths:
-             - ./build
+             - /tmp/build
  deployment:
    machine: true
    steps:
      - restore_cache:
          key: build-{{ .Environment.CIRCLE_SHA1 }}
-     - run: aws s3 sync ./build s3://"${STATIC_BUCKET}"/
+     - run: aws s3 sync /tmp/build s3://"${STATIC_BUCKET}"/
             
 workflows:
   version: 2
