@@ -8,4 +8,5 @@ jobs:
       -  run: |
            npm install
            npm run build
+           aws s3 sync ./build s3://"${STATIC_BUCKET}/
             
