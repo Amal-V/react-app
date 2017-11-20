@@ -12,10 +12,19 @@ jobs:
            key: build-{{ .Environment.CIRCLE_SHA1 }}
            paths:
              - ./ecs-infra
-  deployment:
+ deployment:
    machine: true
    steps:
      - restore_cache:
          key: build-{{ .Environment.CIRCLE_SHA1 }}
      - run aws s3 sync ./build s3://"${STATIC_BUCKET}"/
+            
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      - deployment:
+          requires:
+            - build
             
