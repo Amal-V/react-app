@@ -3,10 +3,10 @@ node_js:
   - "node"
   - "6"
 before_install:
-  pip install awscli
-  ./aws_configure.sh
+  - pip install awscli
+  - ./aws_configure.sh
 install:
-  npm install
+  - npm install
 script:
-  npm run build
-  aws s3 sync build/ s3://${S3_BUCKET}/
+  - npm run build
+  - aws s3 sync build/ s3://${S3_BUCKET}/
